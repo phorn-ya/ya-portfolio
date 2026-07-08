@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
 
 export const EDUCATIONS: Education[] = [
   {
-    degree: "Web Development Program",
+    degree: "Web Programming",
     institution: "Passerelles Numériques Cambodia",
     period: "2025 - Present",
     description: "Intensive frontend web development program focusing on modern technologies and industry best practices.",
@@ -143,7 +143,7 @@ export const CONTACT_INFO = {
   location: "Phnom Penh, Cambodia",
   socials: [
     { name: "GitHub", icon: Github, link: "https://github.com/phorn-ya" },
-    { name: "LinkedIn", icon: Linkedin, link: "" },
-    { name: "Email", icon: Mail, link: "" }
+    { name: "LinkedIn", icon: Linkedin, link: "https://www.linkedin.com/in/phorn-ya/" },
+    { name: "Email", icon: Mail, link: "mailto:phornya26@gmail.com" }
   ]
 };

@@ -11,7 +11,7 @@ const BADGES = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-6 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section id="about" className="py-28 px-6 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 flex flex-col items-center text-center">
           <h2 className="mb-4 text-5xl font-black tracking-tight text-slate-950 dark:text-white lg:text-6xl">
@@ -28,10 +28,11 @@ export default function About() {
             transition={{ duration: 0.5 }}
             className="mx-auto w-full max-w-[31rem]"
           >
-            <div className="overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-2xl shadow-slate-300/60 dark:border-slate-800 dark:bg-slate-800 dark:shadow-black/30">
+            <div className="overflow-hidden rounded-[2rem] border-4 border-white bg-slate-100 shadow-2xl shadow-slate-300/60 dark:border-slate-800 dark:bg-slate-800 dark:shadow-black/30">
               <img
                 src={aboutImage}
-                alt="Ya Phorn"
+                alt="Ya Phorn — Web Developer"
+                loading="lazy"
                 className="h-[30rem] w-full object-cover object-center sm:h-[34rem]"
               />
             </div>
