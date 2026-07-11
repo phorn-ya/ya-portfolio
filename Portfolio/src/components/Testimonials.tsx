@@ -25,7 +25,7 @@ export default function Testimonials() {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-black text-slate-950 dark:text-white tracking-tight">
-            What <span className="text-rose-500">People Say</span>
+            My <span className="text-rose-500"> Testimonials</span>
           </h2>
           <div className="w-20 h-1 bg-rose-500 rounded-full mx-auto mt-4" />
         </div>

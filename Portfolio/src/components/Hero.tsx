@@ -40,7 +40,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-4xl font-extrabold leading-[1.1] tracking-tight">
             <span className="text-slate-900 dark:text-white">Hi, I'm</span>{" "}
             <span className="text-rose-500">Ya</span>{" "}
             <span className="text-rose-500">Phorn</span>
@@ -48,7 +48,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <div className="mt-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-slate-600 dark:text-slate-300 font-medium">
+            <h2 className="text-2xl sm:text-3xl lg:text-3xl text-slate-600 dark:text-slate-300 font-medium">
               A Passionate{" "}
               <span className="text-rose-500 font-semibold">
                 <TypeAnimation
@@ -79,7 +79,7 @@ export default function Hero() {
               href="#projects"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-rose-500 hover:bg-rose-600 text-white rounded-full font-semibold shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/40 flex items-center gap-2 transition-all"
+              className="px-6 py-4 bg-rose-500 hover:bg-rose-600 text-white rounded-full font-semibold shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/40 flex items-center gap-2 transition-all"
             >
               <LayoutGrid size={18} />
               View My Work
@@ -89,7 +89,7 @@ export default function Hero() {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border-2 border-rose-500 text-rose-500 hover:bg-rose-500 hover:text-white rounded-full font-semibold flex items-center gap-2 transition-all"
+              className="px-6 py-4 border-2 border-rose-500 text-rose-500 hover:bg-rose-500 hover:text-white rounded-full font-semibold flex items-center gap-2 transition-all"
             >
               <MessageSquare size={18} />
               Get In Touch

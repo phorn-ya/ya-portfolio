@@ -127,7 +127,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Ready Y",
     role: "PNC WEP Coordinator",
     content: "Ya is a technically strong student with excellent problem-solving skills. His passion for coding and attention to detail make him stand out in web development.",
-    avatar: "https://media.licdn.com/dms/image/v2/C5603AQEy_W2B5osjlQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1610784133410?e=1781740800&v=beta&t=F2Qq4_EUR_Lhq36tt55m064luXrlKuIc4Hevvr4RJeY"
+    avatar: "https://media.licdn.com/dms/image/v2/C5603AQEy_W2B5osjlQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1610784133410?e=1785369600&v=beta&t=cxUvEuxTJLUVvcHEIbwENuandJK-YYP-0COk_uNhloI"
   },
   {
     name: "Sovanchansreyleap Kheng",

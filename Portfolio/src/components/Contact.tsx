@@ -5,7 +5,8 @@ import { CONTACT_INFO } from '../constants';
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
 
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY';
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string;
+const HAS_WEB3FORMS = Boolean(WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'your_access_key_here' && WEB3FORMS_ACCESS_KEY.length > 5);
 
 export default function Contact() {
   const [state, setState] = useState<FormState>('idle');
@@ -37,29 +38,41 @@ export default function Contact() {
     }
 
     try {
-      // Submit via Web3Forms — 250 free submissions/month, no backend required
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          name: formData.get('name'),
-          email: formData.get('email'),
-          message: formData.get('message'),
-          subject: formData.get('_subject') || 'Portfolio Contact Form',
-          botcheck: formData.get('botcheck') || '',
-        }),
-      });
+      if (HAS_WEB3FORMS) {
+        // Submit via Web3Forms — 250 free submissions/month, no backend required
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message'),
+            subject: formData.get('_subject') || 'Portfolio Contact Form',
+            botcheck: formData.get('botcheck') || '',
+          }),
+        });
 
-      const result = await res.json();
+        const result = await res.json();
 
-      if (!result.success) throw new Error(result.message || 'Submission failed');
+        if (!result.success) throw new Error(result.message || 'Submission failed');
 
-      setState('success');
-      form.reset();
+        setState('success');
+        form.reset();
+      } else {
+        // Fallback: open user's email client with pre-filled message
+        const subject = encodeURIComponent((formData.get('_subject') as string) || 'Portfolio Contact Form');
+        const body = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        );
+        window.location.href = `mailto:${CONTACT_INFO.email}?subject=${subject}&body=${body}`;
+
+        setState('success');
+        form.reset();
+      }
     } catch {
       setState('error');
       setErrorMessage('Something went wrong. Please try again or email me directly.');
@@ -139,7 +152,7 @@ export default function Contact() {
             <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 inline-flex items-center gap-2.5">
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
-                Available for Internship &amp; Freelance
+                Available for Internship &amp; Full time work opportunities
               </span>
             </div>
           </div>
@@ -225,7 +238,9 @@ export default function Contact() {
               >
                 <CheckCircle size={18} className="text-emerald-500 shrink-0" />
                 <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
-                  Message sent! I'll get back to you soon.
+                  {HAS_WEB3FORMS
+                    ? "Message sent! I'll get back to you soon."
+                    : 'Your email client opened — send the message to complete.'}
                 </span>
               </motion.div>
             )}

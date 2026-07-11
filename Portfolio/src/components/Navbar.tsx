@@ -1,7 +1,7 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
-import { Sun, Moon, Download, Menu, X } from 'lucide-react';
-import { useDarkMode } from '../hooks/useDarkMode';
+import { Download, Menu, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const NAV_LINKS = [
   { name: 'Home', href: '#home' },
@@ -15,28 +15,18 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const { isDark, toggle } = useDarkMode();
-  const { scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ['rgba(255, 255, 255, 0)', isDark ? 'rgba(15, 23, 42, 0.85)' : 'rgba(255, 255, 255, 0.85)']
-  );
-
-  const shadow = useTransform(
-    scrollY,
-    [0, 100],
-    ['none', '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)']
-  );
-
-  // Track active section on scroll
+  // Track scroll position for background + active section
   useEffect(() => {
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 50);
+
       const sections = NAV_LINKS.map((link) => document.querySelector(link.href));
-      const scrollPos = window.scrollY + 120;
+      const scrollPos = scrollY + 120;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
@@ -58,8 +48,11 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      style={{ backgroundColor, boxShadow: shadow }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-shadow duration-300"
+      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/85 dark:bg-slate-900/85 shadow-sm shadow-black/5'
+          : 'bg-transparent'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <motion.div
@@ -99,16 +92,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <motion.button
-            onClick={toggle}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-            id="theme-toggle"
-            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </motion.button>
+          <ThemeToggle />
 
           <motion.a
             href="/Phorn-Ya-Resume.pdf"
