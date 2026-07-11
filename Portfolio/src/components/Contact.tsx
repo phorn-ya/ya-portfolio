@@ -160,9 +160,6 @@ export default function Contact() {
           {/* Form Side */}
           <motion.form
             onSubmit={handleSubmit}
-            action="mailto:phornya26@gmail.com"
-            method="post"
-            encType="text/plain"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -183,6 +180,7 @@ export default function Contact() {
                   name="name"
                   placeholder="Your Name"
                   required
+                  autoComplete="name"
                   className="w-full px-5 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 dark:text-white transition-all text-sm"
                 />
               </div>
@@ -193,6 +191,7 @@ export default function Contact() {
                   name="email"
                   placeholder="your@email.com"
                   required
+                  autoComplete="email"
                   className="w-full px-5 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 dark:text-white transition-all text-sm"
                 />
               </div>
@@ -204,6 +203,7 @@ export default function Contact() {
                 type="text"
                 name="_subject"
                 placeholder="What's this about?"
+                autoComplete="off"
                 className="w-full px-5 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 dark:text-white transition-all text-sm"
               />
             </div>
