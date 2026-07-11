@@ -143,7 +143,7 @@ export const CONTACT_INFO = {
   location: "Phnom Penh, Cambodia",
   socials: [
     { name: "GitHub", icon: Github, link: "https://github.com/phorn-ya" },
-    { name: "LinkedIn", icon: Linkedin, link: "https://www.linkedin.com/in/phorn-ya/" },
+    { name: "LinkedIn", icon: Linkedin, link: "https://www.linkedin.com/in/phornya/" },
     { name: "Email", icon: Mail, link: "mailto:phornya26@gmail.com" }
   ]
 };
